@@ -1,7 +1,7 @@
 variable "bucket_name" {
   description = "S3 bucket name (must be globally unique, lowercase, hyphens)"
   type        = string
-  default     = "minor-project-bucket"
+  default     = "minor-project-withgitlab"
 }
 
 variable "region" {
