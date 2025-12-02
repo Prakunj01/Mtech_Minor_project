@@ -1,22 +1,17 @@
 # Stage 1: Build React App
-FROM node:18 AS build
+FROM node:16 AS build
 
-# Set working directory
 WORKDIR /app
-
-# Copy full repo into container
 COPY . .
 
-# Move into Portfolio folder (your React project)
 WORKDIR /app/Portfolio
 
-# Install deps
-RUN npm install --legacy-peer-deps --silent
+# Use npm ci for more stable dependency install
+RUN npm ci --legacy-peer-deps --silent
 
-# Build React App
 RUN npm run build
 
-# Stage 2: Nginx Serve Build Output
+# Stage 2: Nginx serve
 FROM nginx:alpine
 COPY --from=build /app/Portfolio/build /usr/share/nginx/html
 EXPOSE 80
