@@ -1,0 +1,21 @@
+# Node / React
+react-src/node_modules/
+react-src/build/
+
+# Terraform
+terraform/.terraform/
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/.terraform.lock.hcl
+*.tfvars
+*.tfvars.json
+crash.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+.env.*.local
