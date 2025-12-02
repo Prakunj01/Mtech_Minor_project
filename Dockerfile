@@ -1,4 +1,4 @@
-# Stage 1: Build React App
+# Stage 1: Build React App using Yarn
 FROM node:16 AS build
 
 WORKDIR /app
@@ -6,12 +6,13 @@ COPY . .
 
 WORKDIR /app/Portfolio
 
-# Use npm ci for more stable dependency install
-RUN npm ci --legacy-peer-deps --silent
+# Install deps using Yarn (most stable)
+RUN yarn install --silent
 
-RUN npm run build
+# Build React App
+RUN yarn build
 
-# Stage 2: Nginx serve
+# Stage 2: Serve using Nginx
 FROM nginx:alpine
 COPY --from=build /app/Portfolio/build /usr/share/nginx/html
 EXPOSE 80
